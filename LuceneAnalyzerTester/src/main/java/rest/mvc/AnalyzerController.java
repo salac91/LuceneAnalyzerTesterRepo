@@ -102,13 +102,16 @@ public class AnalyzerController {
 		
 		String indexDir = servletContext.getRealPath("/indexes") + "\\" + System.currentTimeMillis();
 		
-	    UDDIndexer UDDIndexer = new UDDIndexer(indexDir,analyzer);
+	    UDDIndexer UDDIndexer = new UDDIndexer(indexDir);
+	    UDDIndexer.openIndexWriter(analyzer, indexDir);
 	    
 	    for(DocumentPath documentPath: benchmarkdb.getAllDocumentsPath()) {
 	    	File file = new  File(documentPath.getPath());
 	    	UDDIndexer.index(file);
 		
 	    }
+	    
+	    UDDIndexer.closeIndexWriter();
 	    
 	    List<SearchResultModel> analysisResultList = new ArrayList<SearchResultModel>();
 		List<QueryAndRelevantDocumentsModel> queryAndRelevantDocumentsModels = benchmark.getQueryAndRelevantDocumentsList();
