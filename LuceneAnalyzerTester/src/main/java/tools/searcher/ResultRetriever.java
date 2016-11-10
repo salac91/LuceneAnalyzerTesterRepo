@@ -53,7 +53,6 @@ public class ResultRetriever {
 		}
 		try {
 			if(analyzeQuery){
-			
 					queryParser = new QueryParser(matchVersion, "", analyzer);
 					query = queryParser.parse(query.toString());				
 			}

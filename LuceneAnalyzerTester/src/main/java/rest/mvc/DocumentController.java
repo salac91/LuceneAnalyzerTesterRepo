@@ -269,7 +269,7 @@ public class DocumentController {
 	
 	@RequestMapping(value = "/getFilesNames/{directoryName}", method = RequestMethod.GET)
 	@PreAuthorize("hasRole('User','Admin')")
-	public @ResponseBody List<String> getFilesNames(@PathVariable String directoryName) {
+	public @ResponseBody List<String> getFilesName(@PathVariable String directoryName) {
 		
 		Object principal = SecurityContextHolder.getContext()
 				.getAuthentication().getPrincipal();
